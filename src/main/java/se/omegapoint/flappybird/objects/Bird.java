@@ -39,4 +39,8 @@ public class Bird {
         }
         velocity -= 0.1;
     }
+
+    public int bottomPos() {
+        return rectangle.y + HEIGHT;
+    }
 }

@@ -15,6 +15,7 @@ public class Game {
     private final int width;
     private final int height;
     private int counter;
+    private int score;
 
     public Game(int width, int height) {
         this.width = width;
@@ -27,6 +28,7 @@ public class Game {
         bird = new Bird(20, height / 2);
         pipes = new ArrayList<>();
         pipes.add(new Pipe(width, height / 2));
+        score = 0;
     }
 
     public void action() {
@@ -40,9 +42,16 @@ public class Game {
     }
 
     public void update() {
-
+        System.out.println(score);
         bird.update();
         pipes.forEach(Pipe::update);
+        pipes.stream()
+                .findFirst()
+                .filter(Pipe::hasPassed)
+                .map(pipe -> {
+                    score++;
+                    return pipes.remove(pipe);
+                });
 
         counter++;
         if (counter == 100) {
@@ -52,8 +61,15 @@ public class Game {
     }
 
     public boolean isGameOver() {
-        return pipes.stream()
-                .anyMatch(pipe -> pipe.isCollision(bird));
+        return collideFloor() || collidePipes();
+    }
+
+    private boolean collideFloor() {
+        return bird.bottomPos() > height;
+    }
+
+    private boolean collidePipes() {
+        return pipes.stream().anyMatch(pipe -> pipe.isCollision(bird));
     }
 
     public void reset() {

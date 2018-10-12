@@ -11,7 +11,6 @@ public class Pipe {
 
     public Pipe(int xPos, int yPos) {
         rectangle = new Rectangle(xPos,yPos,WIDTH,HEIGHT);
-
     }
 
     public Graphics render(Graphics g) {
@@ -28,5 +27,9 @@ public class Pipe {
     public boolean isCollision(Bird bird) {
         return rectangle.intersects(bird.rectangle);
 
+    }
+
+    public boolean hasPassed() {
+        return rectangle.x + WIDTH <= 0;
     }
 }
