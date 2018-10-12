@@ -2,14 +2,14 @@ package se.omegapoint.flappybird;
 
 import javax.swing.*;
 
-public class FlappyBird
+public class Main
 {
     public static void main(String[] args)
     {
 
         Game game = new Game();
 
-        GameController controller = new GameController(game);
+        EventListener controller = new EventListener(game);
 
         GamePanel gamePanel = new GamePanel(300, 300, 5, game);
 

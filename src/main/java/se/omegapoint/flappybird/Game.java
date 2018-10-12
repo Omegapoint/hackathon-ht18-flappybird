@@ -3,6 +3,9 @@ package se.omegapoint.flappybird;
 import java.awt.*;
 
 public class Game {
+
+
+
     public void action() {
         System.out.println("Someone did something");
     }
