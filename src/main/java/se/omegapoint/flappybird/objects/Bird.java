@@ -22,7 +22,7 @@ public class Bird {
 
     public Graphics render(Graphics g) {
         g.setColor(Color.RED);
-        g.drawRect(xPos, yPos, WIDTH, HEIGHT);
+        g.fillRect(xPos, yPos, WIDTH, HEIGHT);
         return g;
     }
 
