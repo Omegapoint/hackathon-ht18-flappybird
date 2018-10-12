@@ -10,7 +10,7 @@ import javax.swing.*;
 
 class GamePanel extends JPanel implements ActionListener {
     private final Timer timer;
-    private final Game game;
+    private Game game;
     private int ticks = 0;
 
     GamePanel(int panelWidth, int panelHeight, int borderThickness, final Game game) {
@@ -29,6 +29,9 @@ class GamePanel extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if(game.isGameOver()){
+            game.reset();
+        }
         game.update();
         game.render(g);
     }

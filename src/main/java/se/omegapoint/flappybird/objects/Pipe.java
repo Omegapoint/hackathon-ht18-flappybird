@@ -10,7 +10,6 @@ public class Pipe {
     public final Rectangle rectangle;
 
     public Pipe(int xPos, int yPos) {
-
         rectangle = new Rectangle(xPos,yPos,WIDTH,HEIGHT);
 
     }

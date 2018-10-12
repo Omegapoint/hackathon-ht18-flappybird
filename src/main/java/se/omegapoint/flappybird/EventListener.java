@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class EventListener implements KeyListener {
+
     private final Game game;
 
     public EventListener(final Game game) {

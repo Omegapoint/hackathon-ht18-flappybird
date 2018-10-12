@@ -4,21 +4,28 @@ import se.omegapoint.flappybird.objects.Bird;
 import se.omegapoint.flappybird.objects.Pipe;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Game {
-    private final Bird bird;
-    private List<Pipe> pipes = new ArrayList<>();
+    private Bird bird;
+    private List<Pipe> pipes;
     private final int width;
     private final int height;
-    private int counter = 0;
+    private int counter;
 
     public Game(int width, int height) {
         this.width = width;
         this.height = height;
+        init();
+    }
+
+    private void init() {
+        counter = 0;
         bird = new Bird(20, height / 2);
+        pipes = new ArrayList<>();
         pipes.add(new Pipe(width, height / 2));
     }
 
@@ -28,23 +35,28 @@ public class Game {
 
     public Graphics render(final Graphics g) {
         bird.render(g);
-        pipes.stream().forEach(pipe -> pipe.render(g));
+        pipes.forEach(pipe -> pipe.render(g));
         return g;
     }
 
     public void update() {
 
         bird.update();
-        pipes.stream().forEach(pipe -> {
-            pipe.update();
-            if (pipe.isCollision(bird)) {
-                System.out.println("YOU DIED!!");
-            }
-        });
+        pipes.forEach(Pipe::update);
+
         counter++;
         if (counter == 100) {
             pipes.add(new Pipe(width, height / 2));
             counter = 0;
         }
+    }
+
+    public boolean isGameOver() {
+        return pipes.stream()
+                .anyMatch(pipe -> pipe.isCollision(bird));
+    }
+
+    public void reset() {
+        init();
     }
 }
