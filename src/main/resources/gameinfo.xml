@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gameinfo>
+    <name>My Testgame</name>
+    <subTitle>Made with LITIengine!</subTitle>
+    <description>A game, that was implemented with the LITIengine.</description>
+    <website>https://litiengine.com</website>
+    <version>v0.4.12-alpha</version>
+    <company>gurkenlabs.de</company>
+    <developer>Madelen Hermelin</developer>
+    <developer>Tobias Axelsson</developer>
+    <developer>John Larsson</developer>
+</gameinfo>
