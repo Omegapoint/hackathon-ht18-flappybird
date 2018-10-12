@@ -1,6 +1,5 @@
 package se.omegapoint.flappybird.objects;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.awt.*;
 
@@ -8,7 +7,7 @@ public class Bird {
     private int xPos, yPos;
     private final int WIDTH = 20;
     private final int HEIGHT = 20;
-    private int velocity = 0;
+    private double velocity = 0;
     private final int GRAVITY = 1;
 
     public Bird(int xPos, int yPos) {
@@ -17,9 +16,8 @@ public class Bird {
     }
 
     public void flap() {
-        System.out.println(yPos);
-        velocity += 40;
-
+        if (velocity < 5 && yPos > 0)
+            velocity += 5;
     }
 
     public Graphics render(Graphics g) {
@@ -29,9 +27,12 @@ public class Bird {
     }
 
     public void update() {
-
-        yPos -= (velocity/4) + GRAVITY;
-        velocity -= 5;
-
+        if (yPos > 0) {
+            yPos -= velocity + GRAVITY;
+        } else {
+            yPos = 20;
+            velocity = 0;
+        }
+        velocity -= 0.1;
     }
 }

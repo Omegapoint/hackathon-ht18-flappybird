@@ -11,6 +11,7 @@ import javax.swing.*;
 class GamePanel extends JPanel implements ActionListener {
     private final Timer timer;
     private final Game game;
+    private int ticks = 0;
 
     GamePanel(int panelWidth, int panelHeight, int borderThickness, final Game game) {
         this.game = game;
@@ -19,7 +20,7 @@ class GamePanel extends JPanel implements ActionListener {
         setBackground(Color.DARK_GRAY);
         setBorder(BorderFactory.createLineBorder(Color.WHITE, borderThickness));
 
-        int movementDelay = 5;
+        int movementDelay = 1000 / 60;
         timer = new Timer(movementDelay, this);
         timer.setInitialDelay(0);
         timer.start();
@@ -30,12 +31,11 @@ class GamePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         game.update();
         game.render(g);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        ticks++;
         repaint();
     }
 }
