@@ -2,7 +2,6 @@ package se.omegapoint.flappybird;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.environment.Environment;
-import de.gurkenlabs.litiengine.environment.tilemap.xml.Map;
 import de.gurkenlabs.litiengine.graphics.RenderEngine;
 
 public class FlappyBirdGame {
@@ -13,7 +12,7 @@ public class FlappyBirdGame {
 
         Game.start();
 
-        Game.loadEnvironment(new Environment(new Map()));
+        Game.loadEnvironment(new Environment("desert.tmx"));
 
 
 
