@@ -4,33 +4,37 @@ package se.omegapoint.flappybird.objects;
 import java.awt.*;
 
 public class Bird {
-    private int xPos, yPos;
+
     private final int WIDTH = 20;
     private final int HEIGHT = 20;
     private double velocity = 0;
     private final int GRAVITY = 1;
+    public final Rectangle rectangle;
 
     public Bird(int xPos, int yPos) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+
+        rectangle = new Rectangle(xPos,yPos,WIDTH,HEIGHT);
+
     }
 
     public void flap() {
-        if (velocity < 5 && yPos > 0)
+        if (velocity < 5 && rectangle.getY() > 0)
             velocity += 5;
     }
 
     public Graphics render(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(xPos, yPos, WIDTH, HEIGHT);
+        g.fillRect((int)rectangle.getX(),(int)rectangle.getY(),(int)rectangle.getWidth(), (int)rectangle.getHeight());
+
         return g;
     }
 
     public void update() {
-        if (yPos > 0) {
-            yPos -= velocity + GRAVITY;
+        if (rectangle.getY()> 0) {
+            rectangle.setLocation((int)rectangle.getX(),(int) (rectangle.getY()- velocity + GRAVITY));
         } else {
-            yPos = 20;
+            rectangle.setLocation(rectangle.x, 20);
+           // yPos = 20;
             velocity = 0;
         }
         velocity -= 0.1;

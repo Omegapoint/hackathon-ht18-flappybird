@@ -18,8 +18,8 @@ public class Game {
     public Game(int width, int height) {
         this.width = width;
         this.height = height;
-        bird = new Bird(20,height/2);
-        pipes.add(new Pipe(width, height/2));
+        bird = new Bird(20, height / 2);
+        pipes.add(new Pipe(width, height / 2));
     }
 
     public void action() {
@@ -33,11 +33,17 @@ public class Game {
     }
 
     public void update() {
+
         bird.update();
-        pipes.stream().forEach(pipe -> pipe.update());
-        counter ++;
+        pipes.stream().forEach(pipe -> {
+            pipe.update();
+            if (pipe.isCollision(bird)) {
+                System.out.println("YOU DIED!!");
+            }
+        });
+        counter++;
         if (counter == 100) {
-            pipes.add(new Pipe(width, height/2));
+            pipes.add(new Pipe(width, height / 2));
             counter = 0;
         }
     }
