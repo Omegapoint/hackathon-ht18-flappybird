@@ -12,7 +12,6 @@ class GamePanel extends JPanel implements ActionListener {
     private final Timer timer;
     private final Game game;
 
-
     GamePanel(int panelWidth, int panelHeight, int borderThickness, final Game game) {
         this.game = game;
 
@@ -28,18 +27,13 @@ class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void paintComponent(Graphics g) {
-        System.out.println("PaintComponent");
-        g.setColor(new Color(222,222,22));
-        g.drawRect(0,0,10,10);
-        System.out.println("Render now");
         super.paintComponent(g);
+        game.render(g);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // this is where we end up
         repaint();
-        //System.out.println("actionPerformed");
     }
 }
 

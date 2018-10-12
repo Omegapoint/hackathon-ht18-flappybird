@@ -8,9 +8,8 @@ public class Game {
     }
 
     public Graphics render(final Graphics g) {
-        g.setColor(new Color(222,222,22));
-        g.drawRect(0,0,10,10);
-        System.out.println("Render now");
+        g.setColor(Color.CYAN);
+        g.drawRect(50,50,10,10);
         return g;
     }
 }

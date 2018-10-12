@@ -12,7 +12,7 @@ public class GameController implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        // Do nothing
     }
 
     @Override
@@ -22,6 +22,6 @@ public class GameController implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        // Do nothing
     }
 }
