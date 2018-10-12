@@ -1,18 +1,30 @@
 package se.omegapoint.flappybird;
 
+import se.omegapoint.flappybird.objects.Bird;
+
 import java.awt.*;
 
 public class Game {
+    private final Bird bird;
+    private final int width;
+    private final int height;
 
-
+    public Game(int width, int height) {
+        this.width = width;
+        this.height = height;
+        bird = new Bird(20,height/2);
+    }
 
     public void action() {
-        System.out.println("Someone did something");
+        bird.flap();
     }
 
     public Graphics render(final Graphics g) {
-        g.setColor(Color.CYAN);
-        g.drawRect(50,50,10,10);
+        bird.render(g);
         return g;
+    }
+
+    public void update() {
+        bird.update();
     }
 }
