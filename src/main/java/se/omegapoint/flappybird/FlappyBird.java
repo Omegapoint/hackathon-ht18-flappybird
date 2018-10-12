@@ -16,7 +16,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public class FlappyBird implements ActionListener, MouseListener, KeyListener
+public class FlappyBird implements ActionListener, KeyListener
 {
 
     public static FlappyBird flappyBird;
@@ -47,7 +47,6 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
         jframe.setTitle("Flappy Bird");
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setSize(WIDTH, HEIGHT);
-        jframe.addMouseListener(this);
         jframe.addKeyListener(this);
         jframe.setResizable(false);
         jframe.setVisible(true);
@@ -246,38 +245,10 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
     }
 
     @Override
-    public void mouseClicked(MouseEvent e)
-    {
-        jump();
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e)
-    {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE)
-        {
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             jump();
         }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e)
-    {
     }
 
     @Override
